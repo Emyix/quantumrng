@@ -28,11 +28,11 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Mobile optimizations */
+        /* Mobile optimizations - Улучшена оптимизация для телефонов */
         @media (max-width: 768px) {
             .mobile-stack {
                 flex-direction: column !important;
-                gap: 12px !important;
+                gap: 8px !important; /* Уменьшен gap между кнопками */
             }
             
             .mobile-full-width {
@@ -44,43 +44,127 @@
                 text-align: center !important;
             }
             
+            /* ИЗМЕНЕНО: Уменьшены кнопки управления для телефонов */
             .mobile-large-tap {
-                min-height: 60px !important;
-                padding: 16px !important;
-                font-size: 18px !important;
+                min-height: 48px !important; /* Уменьшено с 60px */
+                padding: 12px !important; /* Уменьшено с 16px */
+                font-size: 16px !important; /* Уменьшено с 18px */
             }
             
             .mobile-inventory-grid {
                 grid-template-columns: repeat(3, 1fr) !important;
-                gap: 8px !important;
+                gap: 6px !important; /* Уменьшено с 8px */
             }
             
             .mobile-small-text {
-                font-size: 12px !important;
+                font-size: 11px !important; /* Уменьшено с 12px */
             }
             
             .mobile-hide {
                 display: none !important;
             }
             
+            /* ИЗМЕНЕНО: Уменьшена главная кнопка ROLL */
             #roll-btn {
-                min-height: 80px !important;
-                font-size: 28px !important;
-                margin-bottom: 20px !important; /* Увеличен отступ для мобильных устройств */
+                min-height: 70px !important; /* Уменьшено с 80px */
+                font-size: 24px !important; /* Уменьшено с 28px */
+                margin-bottom: 15px !important; /* Уменьшено с 20px */
             }
             
+            /* ИЗМЕНЕНО: Уменьшен основной текст ауры */
             #current-aura-name {
-                font-size: 2.5rem !important;
+                font-size: 2rem !important; /* Уменьшено с 2.5rem */
             }
             
             .cutscene-text {
-                font-size: 4rem !important;
-                letter-spacing: 5px !important;
+                font-size: 3rem !important; /* Уменьшено с 4rem */
+                letter-spacing: 3px !important; /* Уменьшено с 5px */
             }
             
-            /* Добавлено: Уменьшение верхнего отступа для основного контейнера */
+            /* ИЗМЕНЕНО: Уменьшен размер заголовка */
+            header h1 {
+                font-size: 1.8rem !important;
+            }
+            
+            /* ИЗМЕНЕНО: Уменьшены отступы в основном контейнере */
             main {
-                padding-top: 10px !important;
+                padding-top: 5px !important;
+                padding-left: 8px !important;
+                padding-right: 8px !important;
+            }
+            
+            /* ИЗМЕНЕНО: Уменьшена область отображения ауры */
+            .relative.w-full.h-64 {
+                height: 50vh !important;
+                margin-bottom: 15px !important;
+            }
+            
+            /* ИЗМЕНЕНО: Уменьшены кнопки в инвентаре */
+            .mobile-equip-btn {
+                min-height: 36px !important; /* Уменьшено с 44px */
+                padding: 6px 4px !important; /* Уменьшено с 10px 5px */
+                font-size: 10px !important; /* Уменьшено с 12px */
+                margin-top: 3px !important; /* Уменьшено с 5px */
+            }
+            
+            /* ИЗМЕНЕНО: Уменьшен размер бейджей редкости */
+            .rarity-badge {
+                padding: 4px 12px !important; /* Уменьшено с 8px 24px */
+                font-size: 10px !important;
+                letter-spacing: 1px !important; /* Уменьшено с 3px */
+            }
+            
+            /* ИЗМЕНЕНО: Уменьшены кнопки в магазине */
+            .shop-item {
+                padding: 10px !important; /* Уменьшено с 15px */
+            }
+            
+            .shop-item h3 {
+                font-size: 16px !important; /* Уменьшено с 18px */
+            }
+            
+            .shop-item p {
+                font-size: 12px !important; /* Уменьшено с 14px */
+            }
+            
+            /* ИЗМЕНЕНО: Уменьшен промо-инпут */
+            .promo-input {
+                padding: 10px 12px !important; /* Уменьшено с 12px 15px */
+                font-size: 14px !important; /* Уменьшено с 16px */
+                margin: 15px 0 !important; /* Уменьшено с 20px 0 */
+            }
+            
+            /* ИЗМЕНЕНО: Уменьшены статы в заголовке */
+            header .text-right.mobile-small-text p:last-child {
+                font-size: 18px !important; /* Уменьшено с 20px+ */
+            }
+            
+            /* ИЗМЕНЕНО: Уменьшено описание под кнопками */
+            .text-xs.text-cyan-400\/70 {
+                font-size: 10px !important;
+                margin-top: 8px !important;
+                max-width: 95% !important;
+            }
+        }
+
+        /* Дополнительная оптимизация для очень маленьких экранов */
+        @media (max-width: 375px) {
+            #roll-btn {
+                min-height: 65px !important;
+                font-size: 22px !important;
+            }
+            
+            .mobile-large-tap {
+                min-height: 44px !important;
+                font-size: 15px !important;
+            }
+            
+            #current-aura-name {
+                font-size: 1.8rem !important;
+            }
+            
+            header h1 {
+                font-size: 1.6rem !important;
             }
         }
 
