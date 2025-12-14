@@ -66,7 +66,7 @@
             #roll-btn {
                 min-height: 80px !important;
                 font-size: 28px !important;
-                margin-bottom: 10px !important;
+                margin-bottom: 20px !important; /* Увеличен отступ для мобильных устройств */
             }
             
             #current-aura-name {
@@ -76,6 +76,11 @@
             .cutscene-text {
                 font-size: 4rem !important;
                 letter-spacing: 5px !important;
+            }
+            
+            /* Добавлено: Уменьшение верхнего отступа для основного контейнера */
+            main {
+                padding-top: 10px !important;
             }
         }
 
@@ -893,7 +898,7 @@
             <h1 class="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 tracking-wider">
                 <i class="fas fa-atom mr-2"></i>QUANTUM RNG
             </h1>
-            <span class="text-xs text-cyan-400/70 tracking-widest">v1.0.3</span>
+            <span class="text-xs text-cyan-400/70 tracking-widest">v1.0.4</span>
         </div>
         <div class="flex gap-4 md:gap-6 text-sm md:text-base mobile-center">
             <div class="text-right mobile-small-text">
@@ -1045,13 +1050,26 @@
                     <i class="fas fa-check"></i> Активировать
                 </button>
                 
+                <!-- ИЗМЕНЕНО: Убрана подсказка с промокодами -->
+                <!-- 
                 <div class="mt-4 p-3 bg-gradient-to-r from-green-900/30 to-blue-900/30 rounded-lg">
                     <div class="flex items-start gap-2">
                         <i class="fas fa-lightbulb text-yellow-300 mt-1"></i>
                         <p class="text-xs text-gray-300">
                             Активные промокоды:<br>
-                            <span class="text-green-300">"RELEASE"</span> и <span class="text-green-300">"1.0.3"</span> - по 1000 монет
+                            <span class="text-green-300">"RELEASE"</span> и <span class="text-green-300">"1.0.4"</span> - по 1000 монет
                         </p>
+                    </div>
+                </div>
+                -->
+                
+                <!-- ИЗМЕНЕНО: Добавлена ссылка на Telegram-канал -->
+                <div class="mt-4 p-3 bg-gradient-to-r from-purple-900/30 to-cyan-900/30 rounded-lg">
+                    <div class="flex items-center justify-center gap-2">
+                        <i class="fab fa-telegram text-blue-400 text-lg"></i>
+                        <a href="https://t.me/QuantumRng" target="_blank" class="text-cyan-300 hover:text-cyan-200 transition-colors text-sm md:text-base">
+                            Telegram-канал игры
+                        </a>
                     </div>
                 </div>
                 
@@ -1392,7 +1410,7 @@
             if (code === 'RELEASE') {
                 reward = 1000;
                 valid = true;
-            } else if (code === '1.0.3') {
+            } else if (code === '1.0.0') { // ИЗМЕНЕНО: Промокод изменен на "1.0.0"
                 reward = 1000;
                 valid = true;
             }
