@@ -28,36 +28,30 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Mobile optimizations - НОВАЯ ОПТИМИЗАЦИЯ */
+        /* Mobile optimizations */
         @media (max-width: 768px) {
-            /* Уменьшаем заголовок */
             header h1 {
                 font-size: 1.5rem !important;
             }
             
-            /* Уменьшаем статистику в шапке */
             header .text-right p:last-child {
                 font-size: 14px !important;
             }
             
-            /* Уменьшаем область отображения ауры */
             .relative.w-full.h-64 {
                 height: 40vh !important;
                 margin-bottom: 10px !important;
             }
             
-            /* Уменьшаем основной текст ауры */
             #current-aura-name {
                 font-size: 1.8rem !important;
             }
             
-            /* Уменьшаем кольцо анимации */
             .absolute.w-48.h-48 {
                 width: 180px !important;
                 height: 180px !important;
             }
             
-            /* Главная кнопка ROLL - нормальная */
             #roll-btn {
                 min-height: 70px !important;
                 font-size: 22px !important;
@@ -66,7 +60,6 @@
                 max-width: 95% !important;
             }
             
-            /* Ряд кнопок AUTO и КОЛЛЕКЦИЯ - в ряд как кнопка ROLL */
             .mobile-button-row {
                 display: flex !important;
                 flex-direction: row !important;
@@ -83,10 +76,9 @@
                 padding: 10px !important;
             }
             
-            /* Маленькая иконка магазина */
             .mobile-shop-icon {
                 position: absolute !important;
-                top: 120px !important; /* ИЗМЕНЕНО: было 70px, теперь 120px */
+                top: 120px !important;
                 right: 20px !important;
                 width: 40px !important;
                 height: 40px !important;
@@ -100,14 +92,12 @@
                 border: 2px solid #00ff00 !important;
             }
             
-            /* Уменьшаем описание под кнопками */
             .text-xs.text-cyan-400\/70 {
                 font-size: 10px !important;
                 max-width: 95% !important;
                 padding: 0 10px !important;
             }
             
-            /* Уменьшаем инвентарь и магазин */
             .mobile-inventory-grid {
                 grid-template-columns: repeat(3, 1fr) !important;
                 gap: 6px !important;
@@ -117,7 +107,6 @@
                 padding: 8px !important;
             }
             
-            /* Уменьшаем шоп */
             .shop-item {
                 padding: 10px !important;
             }
@@ -127,19 +116,16 @@
                 font-size: 14px !important;
             }
             
-            /* Убираем ненужные элементы на мобильных */
             .mobile-hide {
                 display: none !important;
             }
             
-            /* Уменьшаем заголовки в выезжающих панелях */
             #inventory-drawer h2,
             #shop-drawer h2 {
                 font-size: 18px !important;
             }
         }
 
-        /* Дополнительная оптимизация для очень маленьких экранов */
         @media (max-width: 375px) {
             #roll-btn {
                 min-height: 65px !important;
@@ -152,7 +138,7 @@
             }
             
             .mobile-shop-icon {
-                top: 110px !important; /* ИЗМЕНЕНО: было 65px, теперь 110px */
+                top: 110px !important;
                 right: 15px !important;
                 width: 36px !important;
                 height: 36px !important;
@@ -163,7 +149,7 @@
             }
         }
 
-        /* --- New Rarity Badges --- */
+        /* Rarity Badges */
         .rarity-badge {
             display: inline-block;
             padding: 8px 24px;
@@ -271,7 +257,7 @@
                 pulse-black 1s infinite alternate;
         }
 
-        /* --- Rarity Badge Animations --- */
+        /* Rarity Badge Animations */
         @keyframes shimmer {
             0% { background-position: -200% 0; }
             100% { background-position: 200% 0; }
@@ -372,7 +358,7 @@
             100% { box-shadow: 0 0 120px #ff0000, 0 0 240px #00ffff; }
         }
 
-        /* --- Aura Text Styles --- */
+        /* Aura Text Styles */
         .aura-text {
             font-family: 'Orbitron', monospace;
             font-weight: 900;
@@ -446,7 +432,7 @@
             100% { text-shadow: -3px -3px 0 #ff0000, 3px 3px 0 #00ffff; }
         }
 
-        /* --- Collection Animations --- */
+        /* Collection Animations */
         .collection-card {
             transition: all 0.3s ease;
             background: rgba(20, 20, 40, 0.7);
@@ -506,7 +492,7 @@
         @keyframes hover-eternal { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
         @keyframes hover-infinity { 0% { box-shadow: 0 0 40px #ff000066, 0 0 40px #00ffff66; } 100% { box-shadow: 0 0 80px #ff000066, 0 0 80px #00ffff66; } }
 
-        /* --- Best Aura Display --- */
+        /* Best Aura Display */
         .best-aura-display {
             display: inline-block;
             padding: 8px 20px;
@@ -535,7 +521,7 @@
             animation: best-infinity 1s infinite alternate, glitch 2s infinite;
         }
 
-        /* --- Potion Timer (Bottom Right) --- */
+        /* Potion Timer */
         #potion-timer {
             position: fixed;
             bottom: 20px;
@@ -586,7 +572,7 @@
             50% { transform: scale(1.1); }
         }
 
-        /* --- Shop Styles --- */
+        /* Shop Styles */
         .shop-item {
             background: linear-gradient(45deg, #1a1a2a, #2a2a3a);
             border: 2px solid #00f7ff;
@@ -611,7 +597,7 @@
             box-shadow: none;
         }
 
-        /* --- Promo Code in Shop --- */
+        /* Promo Code in Shop */
         .promo-input {
             width: 100%;
             padding: 12px 15px;
@@ -632,7 +618,7 @@
             box-shadow: 0 0 15px #00f7ff;
         }
 
-        /* --- Mobile Equip Buttons --- */
+        /* Mobile Equip Buttons */
         .mobile-equip-btn {
             min-height: 44px !important;
             padding: 10px 5px !important;
@@ -640,7 +626,7 @@
             margin-top: 5px !important;
         }
 
-        /* --- Cutscene Overlay --- */
+        /* Cutscene Overlay */
         #cutscene-overlay {
             display: none;
             position: fixed;
@@ -678,7 +664,7 @@
             transition: all 2s cubic-bezier(0.215, 0.610, 0.355, 1);
         }
 
-        /* --- Cutscene Animations --- */
+        /* Cutscene Animations */
         @keyframes particle-explode {
             0% { transform: translate(0, 0) scale(0); opacity: 1; }
             100% { transform: translate(var(--tx), var(--ty)) scale(3); opacity: 0; }
@@ -828,7 +814,7 @@
             100% { transform: scale(1) rotate(12240deg); opacity: 1; }
         }
 
-        /* --- Transition Animation --- */
+        /* Transition Animation */
         @keyframes transition-to-game {
             0% { 
                 transform: scale(1) translate(0, 0); 
@@ -842,13 +828,13 @@
             }
         }
 
-        /* --- Custom Scrollbar --- */
+        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #111122; }
         ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #00f7ff, #ff00ff); border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: linear-gradient(to bottom, #00ff9d, #00f7ff); }
 
-        /* --- Button Effects --- */
+        /* Button Effects */
         .btn-neon {
             background: transparent;
             border: 2px solid var(--neon-blue);
@@ -888,7 +874,7 @@
             box-shadow: 0 0 30px #00ff00, 0 0 40px #00ff00, inset 0 0 20px rgba(0, 255, 0, 0.2);
         }
 
-        /* --- Shine Effect --- */
+        /* Shine Effect */
         @keyframes shine {
             to { transform: translateX(100%); }
         }
@@ -904,7 +890,7 @@
             animation: shine 0.7s;
         }
 
-        /* --- Background Effects --- */
+        /* Background Effects */
         .bg-grid {
             background-image: 
                 linear-gradient(rgba(0, 247, 255, 0.05) 1px, transparent 1px),
@@ -930,7 +916,7 @@
             z-index: 5;
         }
         
-        /* --- Mobile Touch Fix --- */
+        /* Mobile Touch Fix */
         .touch-fix {
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -977,7 +963,6 @@
             <h1 class="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 tracking-wider">
                 <i class="fas fa-atom mr-2"></i>QUANTUM RNG
             </h1>
-            <!-- ИЗМЕНЕНО: Версия обновлена на 1.0.5 -->
             <span class="text-xs text-cyan-400/70 tracking-widest">v1.0.5</span>
         </div>
         <div class="flex gap-4 md:gap-6 text-sm md:text-base mobile-center">
@@ -1033,7 +1018,7 @@
 
         <!-- Controls -->
         <div class="flex flex-col items-center gap-4 md:gap-6 w-full px-2">
-            <!-- Main ROLL button - обычная на мобильных -->
+            <!-- Main ROLL button -->
             <button id="roll-btn" class="group relative w-full max-w-md h-20 md:h-20 btn-neon text-2xl md:text-3xl font-black tracking-widest uppercase rounded-lg hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden tap-highlight touch-fix"
                     style="min-height: 80px; padding: 20px;">
                 <span class="relative z-10 flex items-center justify-center gap-3">
@@ -1042,7 +1027,7 @@
                 <div class="shine-overlay"></div>
             </button>
 
-            <!-- Ряд кнопок AUTO и КОЛЛЕКЦИЯ - на мобильных в ряд под кнопкой ROLL -->
+            <!-- Ряд кнопок AUTO и КОЛЛЕКЦИЯ -->
             <div class="mobile-button-row hidden md:flex md:flex-row gap-4 w-full max-w-md">
                 <button id="auto-roll-btn" class="w-full md:w-auto px-6 py-3 md:px-8 md:py-3 btn-neon-red rounded-lg text-lg font-bold hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3">
                     <i class="fas fa-bolt"></i> 
@@ -1051,7 +1036,6 @@
                 <button onclick="toggleInventory()" class="w-full md:w-auto px-6 py-3 md:px-8 md:py-3 btn-neon rounded-lg text-lg font-bold hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3">
                     <i class="fas fa-box-open"></i> КОЛЛЕКЦИЯ
                 </button>
-                <!-- Кнопка магазина скрыта на мобильных -->
                 <button onclick="toggleShop()" class="w-full md:w-auto px-6 py-3 md:px-8 md:py-3 btn-neon-green rounded-lg text-lg font-bold hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 hidden md:flex">
                     <i class="fas fa-store"></i> МАГАЗИН
                 </button>
@@ -1203,7 +1187,6 @@
                 cutscene: false,
                 price: 40
             },
-            // New auras starting from pyromaniac
             { 
                 id: 'vulcan', 
                 name: 'VULCAN', 
@@ -1323,16 +1306,16 @@
         // --- State ---
         let state = {
             totalRolls: 0,
-            inventory: {}, // Map: id -> count
-            bestAura: null, // object
+            inventory: {},
+            bestAura: null,
             autoRoll: false,
             coins: 0,
-            equippedAura: null, // aura id
+            equippedAura: null,
             luckPotionActive: false,
-            luckPotionTimeLeft: 0, // seconds
+            luckPotionTimeLeft: 0,
             luckPotionTimer: null,
             cutsceneActive: false,
-            usedPromoCodes: [] // Array of used promo codes
+            usedPromoCodes: []
         };
 
         // --- DOM Elements ---
@@ -1384,20 +1367,15 @@
             
             // Mobile optimizations
             if (isMobile) {
-                // Add mobile-specific classes
                 document.body.classList.add('mobile-optimized');
-                
-                // Показать мобильную иконку магазина
                 mobileShopIcon.style.display = 'flex';
                 
-                // Показать ряд кнопок для мобильных
                 const mobileButtonRow = document.querySelector('.mobile-button-row');
                 if (mobileButtonRow) {
                     mobileButtonRow.classList.remove('hidden');
                     mobileButtonRow.classList.add('flex');
                 }
                 
-                // Fix button positioning
                 setTimeout(() => {
                     const buttons = document.querySelectorAll('button');
                     buttons.forEach(btn => {
@@ -1406,7 +1384,7 @@
                 }, 100);
             }
             
-            // Roll button events - optimized for mobile
+            // Roll button events
             rollBtn.addEventListener('click', handleRollClick);
             rollBtn.addEventListener('touchstart', handleRollTouchStart);
             rollBtn.addEventListener('touchend', handleRollTouchEnd);
@@ -1443,11 +1421,10 @@
             if (isHolding || isRolling) return;
             isHolding = true;
             
-            // Start hold after 500ms
             holdRollTimeout = setTimeout(() => {
                 if (isHolding && !isRolling) {
                     holdRollInterval = setInterval(() => {
-                        if (!isRolling) performRoll(true); // Skip cutscenes
+                        if (!isRolling) performRoll(true);
                     }, 200);
                 }
             }, 500);
@@ -1465,7 +1442,6 @@
             }
             
             if (isHolding && !isRolling) {
-                // Single tap - normal roll
                 performRoll();
             }
             
@@ -1481,13 +1457,11 @@
                 return;
             }
             
-            // Check if already used
             if (state.usedPromoCodes.includes(code)) {
                 showNotification('Этот промокод уже был использован!', 'red');
                 return;
             }
             
-            // Check valid codes
             let reward = 0;
             let valid = false;
             
@@ -1497,7 +1471,7 @@
             } else if (code === '1.0.0') {
                 reward = 1000;
                 valid = true;
-            } else if (code === 'MOBILEBUG') { // ИЗМЕНЕНО: Добавлен новый промокод
+            } else if (code === 'MOBILEBUG') {
                 reward = 2000;
                 valid = true;
             }
@@ -1525,7 +1499,6 @@
         function getLuckMultiplier() {
             let multiplier = 1.0;
             
-            // Add equipped aura bonus
             if (state.equippedAura) {
                 const aura = AURAS.find(a => a.id === state.equippedAura);
                 if (aura && aura.luckMultiplier) {
@@ -1533,7 +1506,6 @@
                 }
             }
             
-            // Add potion bonus
             if (state.luckPotionActive) {
                 multiplier *= 2;
             }
@@ -1551,20 +1523,33 @@
             }
         }
 
-        // --- Core RNG Logic with Luck ---
+        // --- FIXED RNG Logic ---
         function getRandomAura() {
             const sortedAuras = [...AURAS].sort((a, b) => b.chance - a.chance);
             const luckMultiplier = getLuckMultiplier();
-
+            
+            let totalWeight = 0;
+            const weightedAuras = [];
+            
             for (let aura of sortedAuras) {
-                // Adjust chance based on luck multiplier
-                // Higher luck = better chance to get rare items
-                const adjustedChance = aura.chance / luckMultiplier;
-                const roll = Math.floor(Math.random() * adjustedChance);
-                if (roll === 0) {
-                    return aura;
+                let weight = 1 / aura.chance;
+                
+                if (aura.chance >= 64) {
+                    weight *= luckMultiplier;
+                }
+                
+                totalWeight += weight;
+                weightedAuras.push({ aura, weight, cumulativeWeight: totalWeight });
+            }
+            
+            const random = Math.random() * totalWeight;
+            
+            for (let item of weightedAuras) {
+                if (random < item.cumulativeWeight) {
+                    return item.aura;
                 }
             }
+            
             return AURAS[0];
         }
 
@@ -1581,7 +1566,6 @@
                 nameDisplay.innerText = randomTemp.name;
                 nameDisplay.className = `text-4xl md:text-7xl font-black tracking-wider mb-4 ${randomTemp.color} blur-sm`;
                 
-                // Update rarity badge during rolling
                 rarityDisplay.innerHTML = `<span class="rarity-badge ${randomTemp.rarityClass}">${randomTemp.name}</span>`;
                 chanceDisplay.innerText = `1 in ${randomTemp.chance.toLocaleString()}`;
                 
@@ -1607,13 +1591,22 @@
                 state.cutsceneActive = false;
             }
 
-            // Update State
+            // Update State - ИСПРАВЛЕНИЕ БАГА
             state.totalRolls++;
-            if (!state.inventory[result.id]) state.inventory[result.id] = 0;
+            
+            // Гарантированное добавление ауры в инвентарь
+            if (!state.inventory[result.id]) {
+                state.inventory[result.id] = 0;
+            }
             state.inventory[result.id]++;
             
             if (!state.bestAura || result.chance > state.bestAura.chance) {
                 state.bestAura = result;
+            }
+
+            // Показываем уведомление для редких аур
+            if (result.chance >= 64) {
+                showNotification(`Вы получили редкую ауру: ${result.name}!`, 'cyan');
             }
 
             saveData();
@@ -1626,24 +1619,19 @@
         }
 
         function displayResult(aura) {
-            // Update Text
             nameDisplay.innerText = aura.name;
             nameDisplay.className = `text-4xl md:text-7xl font-black tracking-wider mb-4 ${aura.color} transition-all duration-500`;
             
-            // Pop effect
             nameDisplay.style.transform = 'scale(1.1)';
             setTimeout(() => nameDisplay.style.transform = 'scale(1)', 200);
 
-            // Update rarity badge
             rarityDisplay.innerHTML = `<span class="rarity-badge ${aura.rarityClass}">${aura.name}</span>`;
             chanceDisplay.innerText = `1 in ${aura.chance.toLocaleString()}`;
             descDisplay.innerText = aura.desc;
 
-            // Update Glow
             glowDisplay.style.backgroundColor = aura.hex;
             glowDisplay.style.opacity = aura.chance > 100 ? '0.4' : '0.15';
             
-            // Special effects for ultra rare auras
             if (aura.id === 'infinity') {
                 document.body.style.animation = "shake 0.5s";
                 setTimeout(() => document.body.style.animation = "", 500);
@@ -1660,7 +1648,6 @@
                 potionTimer.style.display = 'block';
                 startPotionTimer();
                 
-                // Show notification
                 showNotification('Зелье удачи активировано! Удача удвоена на 1 минуту.', 'green');
                 
                 saveData();
@@ -1677,7 +1664,6 @@
             }
             
             state.luckPotionTimer = setInterval(() => {
-                // Pause timer during cutscenes
                 if (!state.cutsceneActive) {
                     state.luckPotionTimeLeft--;
                     potionTimeDisplay.textContent = `${state.luckPotionTimeLeft}с`;
@@ -1696,7 +1682,7 @@
             }, 1000);
         }
 
-        // --- Enhanced Cutscene System ---
+        // --- Cutscene System ---
         function playCutscene(aura) {
             return new Promise((resolve) => {
                 cutsceneOverlay.style.display = 'flex';
@@ -1705,10 +1691,8 @@
                 cutsceneText.innerHTML = aura.name;
                 cutsceneText.className = `cutscene-text ${aura.color}`;
                 
-                // Reset flash
                 cutsceneFlash.style.opacity = '0';
                 
-                // Show subtitle
                 setTimeout(() => {
                     cutsceneSub.innerText = getCutsceneSubtitle(aura);
                     cutsceneSub.style.opacity = '1';
@@ -1718,17 +1702,14 @@
                     cutsceneSub.style.opacity = '0';
                 }, 2000);
 
-                // Start cutscene animation
                 setTimeout(() => {
                     cutsceneText.style.opacity = '1';
                     cutsceneText.style.animation = `${aura.cutsceneAnimation} ${aura.cutsceneDuration/1000}s forwards`;
                     
-                    // Create particles throughout the animation
                     const particleInterval = setInterval(() => {
                         createCutsceneParticles(aura, 5);
                     }, aura.cutsceneDuration / 20);
                     
-                    // Flash effects based on aura rarity
                     const flashCount = Math.floor(aura.cutsceneDuration / 2000);
                     for(let i = 0; i < flashCount; i++) {
                         setTimeout(() => {
@@ -1736,19 +1717,15 @@
                         }, (aura.cutsceneDuration / flashCount) * i);
                     }
                     
-                    // End cutscene with transition to game
                     setTimeout(() => {
                         clearInterval(particleInterval);
                         
-                        // Transition animation
                         cutsceneText.style.animation = `transition-to-game 2s forwards`;
                         
-                        // Update game display
                         setTimeout(() => {
                             displayResult(aura);
                         }, 1000);
                         
-                        // Hide cutscene
                         setTimeout(() => {
                             cutsceneOverlay.style.display = 'none';
                             cutsceneText.style.animation = '';
@@ -1785,7 +1762,6 @@
                 particle.style.backgroundColor = aura.hex;
                 particle.style.boxShadow = `0 0 10px ${aura.hex}, 0 0 20px ${aura.hex}`;
                 
-                // Random direction
                 const angle = Math.random() * Math.PI * 2;
                 const distance = 100 + Math.random() * 200;
                 particle.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
@@ -1859,6 +1835,7 @@
             const collectedIds = Object.keys(state.inventory);
             const collectedAuras = collectedIds
                 .map(id => AURAS.find(a => a.id === id))
+                .filter(aura => aura)
                 .sort((a, b) => b.chance - a.chance);
 
             if (collectedAuras.length === 0) {
@@ -1890,7 +1867,6 @@
                         </button>
                     `;
                 } else if (aura.id === 'common') {
-                    // Special delete button for Common auras
                     buttons += `
                         <button onclick="deleteAura('${aura.id}')" class="mt-2 text-xs bg-gradient-to-r from-red-700 to-red-900 hover:from-red-600 hover:to-red-800 px-2 py-1 md:px-3 md:py-2 rounded-lg text-white w-full transition-all mobile-equip-btn">
                             <i class="fas fa-trash mr-1"></i>Удалить
@@ -1940,8 +1916,10 @@
 
         function showAura(id) {
             const aura = AURAS.find(a => a.id === id);
-            displayResult(aura);
-            toggleInventory();
+            if (aura) {
+                displayResult(aura);
+                toggleInventory();
+            }
         }
         
         function equipAura(id) {
@@ -1975,7 +1953,6 @@
                     delete state.inventory[id];
                 }
                 
-                // Unequip if selling equipped aura
                 if (state.equippedAura === id) {
                     state.equippedAura = null;
                     updateLuckMultiplierDisplay();
@@ -1994,7 +1971,6 @@
                 const count = state.inventory[id];
                 delete state.inventory[id];
                 
-                // Unequip if deleting equipped aura
                 if (state.equippedAura === id) {
                     state.equippedAura = null;
                     updateLuckMultiplierDisplay();
@@ -2029,7 +2005,6 @@
             let totalCoins = 0;
             let totalSold = 0;
             
-            // Create copy of inventory keys
             const auraIds = Object.keys(state.inventory);
             
             for (const id of auraIds) {
@@ -2040,7 +2015,6 @@
                     totalSold += count;
                     delete state.inventory[id];
                     
-                    // Unequip if selling equipped aura
                     if (state.equippedAura === id) {
                         state.equippedAura = null;
                     }
@@ -2069,7 +2043,7 @@
                 autoBtn.classList.add('bg-red-900/20');
                 
                 autoInterval = setInterval(() => {
-                    if (!isRolling) performRoll(true); // Skip cutscenes in auto mode
+                    if (!isRolling) performRoll(true);
                 }, 800);
             } else {
                 autoStatus.innerText = "OFF";
