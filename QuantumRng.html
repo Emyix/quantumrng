@@ -28,122 +28,114 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Mobile optimizations - Улучшена оптимизация для телефонов */
+        /* Mobile optimizations - НОВАЯ ОПТИМИЗАЦИЯ */
         @media (max-width: 768px) {
-            .mobile-stack {
-                flex-direction: column !important;
-                gap: 8px !important; /* Уменьшен gap между кнопками */
+            /* Уменьшаем заголовок */
+            header h1 {
+                font-size: 1.5rem !important;
             }
             
-            .mobile-full-width {
+            /* Уменьшаем статистику в шапке */
+            header .text-right p:last-child {
+                font-size: 14px !important;
+            }
+            
+            /* Уменьшаем область отображения ауры */
+            .relative.w-full.h-64 {
+                height: 40vh !important;
+                margin-bottom: 10px !important;
+            }
+            
+            /* Уменьшаем основной текст ауры */
+            #current-aura-name {
+                font-size: 1.8rem !important;
+            }
+            
+            /* Уменьшаем кольцо анимации */
+            .absolute.w-48.h-48 {
+                width: 180px !important;
+                height: 180px !important;
+            }
+            
+            /* Главная кнопка ROLL - нормальная */
+            #roll-btn {
+                min-height: 70px !important;
+                font-size: 22px !important;
+                margin-bottom: 15px !important;
                 width: 100% !important;
+                max-width: 95% !important;
             }
             
-            .mobile-center {
+            /* Ряд кнопок AUTO и КОЛЛЕКЦИЯ - в ряд как кнопка ROLL */
+            .mobile-button-row {
+                display: flex !important;
+                flex-direction: row !important;
+                width: 100% !important;
+                max-width: 95% !important;
+                gap: 10px !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .mobile-button-row button {
+                flex: 1 !important;
+                min-height: 50px !important;
+                font-size: 16px !important;
+                padding: 10px !important;
+            }
+            
+            /* Маленькая иконка магазина */
+            .mobile-shop-icon {
+                position: absolute !important;
+                top: 70px !important;
+                right: 20px !important;
+                width: 40px !important;
+                height: 40px !important;
+                border-radius: 50% !important;
+                display: flex !important;
+                align-items: center !important;
                 justify-content: center !important;
-                text-align: center !important;
+                font-size: 18px !important;
+                z-index: 30 !important;
+                background: rgba(0, 255, 0, 0.2) !important;
+                border: 2px solid #00ff00 !important;
             }
             
-            /* ИЗМЕНЕНО: Уменьшены кнопки управления для телефонов */
-            .mobile-large-tap {
-                min-height: 48px !important; /* Уменьшено с 60px */
-                padding: 12px !important; /* Уменьшено с 16px */
-                font-size: 16px !important; /* Уменьшено с 18px */
+            /* Уменьшаем описание под кнопками */
+            .text-xs.text-cyan-400\/70 {
+                font-size: 10px !important;
+                max-width: 95% !important;
+                padding: 0 10px !important;
             }
             
+            /* Уменьшаем инвентарь и магазин */
             .mobile-inventory-grid {
                 grid-template-columns: repeat(3, 1fr) !important;
-                gap: 6px !important; /* Уменьшено с 8px */
+                gap: 6px !important;
             }
             
-            .mobile-small-text {
-                font-size: 11px !important; /* Уменьшено с 12px */
+            .collection-card {
+                padding: 8px !important;
             }
             
+            /* Уменьшаем шоп */
+            .shop-item {
+                padding: 10px !important;
+            }
+            
+            .promo-input {
+                padding: 10px !important;
+                font-size: 14px !important;
+            }
+            
+            /* Убираем ненужные элементы на мобильных */
             .mobile-hide {
                 display: none !important;
             }
             
-            /* ИЗМЕНЕНО: Уменьшена главная кнопка ROLL */
-            #roll-btn {
-                min-height: 70px !important; /* Уменьшено с 80px */
-                font-size: 24px !important; /* Уменьшено с 28px */
-                margin-bottom: 15px !important; /* Уменьшено с 20px */
-            }
-            
-            /* ИЗМЕНЕНО: Уменьшен основной текст ауры */
-            #current-aura-name {
-                font-size: 2rem !important; /* Уменьшено с 2.5rem */
-            }
-            
-            .cutscene-text {
-                font-size: 3rem !important; /* Уменьшено с 4rem */
-                letter-spacing: 3px !important; /* Уменьшено с 5px */
-            }
-            
-            /* ИЗМЕНЕНО: Уменьшен размер заголовка */
-            header h1 {
-                font-size: 1.8rem !important;
-            }
-            
-            /* ИЗМЕНЕНО: Уменьшены отступы в основном контейнере */
-            main {
-                padding-top: 5px !important;
-                padding-left: 8px !important;
-                padding-right: 8px !important;
-            }
-            
-            /* ИЗМЕНЕНО: Уменьшена область отображения ауры */
-            .relative.w-full.h-64 {
-                height: 50vh !important;
-                margin-bottom: 15px !important;
-            }
-            
-            /* ИЗМЕНЕНО: Уменьшены кнопки в инвентаре */
-            .mobile-equip-btn {
-                min-height: 36px !important; /* Уменьшено с 44px */
-                padding: 6px 4px !important; /* Уменьшено с 10px 5px */
-                font-size: 10px !important; /* Уменьшено с 12px */
-                margin-top: 3px !important; /* Уменьшено с 5px */
-            }
-            
-            /* ИЗМЕНЕНО: Уменьшен размер бейджей редкости */
-            .rarity-badge {
-                padding: 4px 12px !important; /* Уменьшено с 8px 24px */
-                font-size: 10px !important;
-                letter-spacing: 1px !important; /* Уменьшено с 3px */
-            }
-            
-            /* ИЗМЕНЕНО: Уменьшены кнопки в магазине */
-            .shop-item {
-                padding: 10px !important; /* Уменьшено с 15px */
-            }
-            
-            .shop-item h3 {
-                font-size: 16px !important; /* Уменьшено с 18px */
-            }
-            
-            .shop-item p {
-                font-size: 12px !important; /* Уменьшено с 14px */
-            }
-            
-            /* ИЗМЕНЕНО: Уменьшен промо-инпут */
-            .promo-input {
-                padding: 10px 12px !important; /* Уменьшено с 12px 15px */
-                font-size: 14px !important; /* Уменьшено с 16px */
-                margin: 15px 0 !important; /* Уменьшено с 20px 0 */
-            }
-            
-            /* ИЗМЕНЕНО: Уменьшены статы в заголовке */
-            header .text-right.mobile-small-text p:last-child {
-                font-size: 18px !important; /* Уменьшено с 20px+ */
-            }
-            
-            /* ИЗМЕНЕНО: Уменьшено описание под кнопками */
-            .text-xs.text-cyan-400\/70 {
-                font-size: 10px !important;
-                margin-top: 8px !important;
-                max-width: 95% !important;
+            /* Уменьшаем заголовки в выезжающих панелях */
+            #inventory-drawer h2,
+            #shop-drawer h2 {
+                font-size: 18px !important;
             }
         }
 
@@ -151,19 +143,22 @@
         @media (max-width: 375px) {
             #roll-btn {
                 min-height: 65px !important;
-                font-size: 22px !important;
+                font-size: 20px !important;
             }
             
-            .mobile-large-tap {
-                min-height: 44px !important;
-                font-size: 15px !important;
+            .mobile-button-row button {
+                min-height: 45px !important;
+                font-size: 14px !important;
+            }
+            
+            .mobile-shop-icon {
+                top: 65px !important;
+                right: 15px !important;
+                width: 36px !important;
+                height: 36px !important;
             }
             
             #current-aura-name {
-                font-size: 1.8rem !important;
-            }
-            
-            header h1 {
                 font-size: 1.6rem !important;
             }
         }
@@ -982,7 +977,8 @@
             <h1 class="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 tracking-wider">
                 <i class="fas fa-atom mr-2"></i>QUANTUM RNG
             </h1>
-            <span class="text-xs text-cyan-400/70 tracking-widest">v1.0.4</span>
+            <!-- ИЗМЕНЕНО: Версия обновлена на 1.0.5 -->
+            <span class="text-xs text-cyan-400/70 tracking-widest">v1.0.5</span>
         </div>
         <div class="flex gap-4 md:gap-6 text-sm md:text-base mobile-center">
             <div class="text-right mobile-small-text">
@@ -1001,6 +997,11 @@
             </div>
         </div>
     </header>
+
+    <!-- Маленькая иконка магазина для мобильных устройств -->
+    <button id="mobile-shop-icon" class="mobile-shop-icon md:hidden" onclick="toggleShop()">
+        <i class="fas fa-store text-green-300"></i>
+    </button>
 
     <!-- Main Game Area -->
     <main class="flex-1 w-full max-w-5xl flex flex-col items-center justify-center p-4 md:p-6 relative">
@@ -1032,7 +1033,7 @@
 
         <!-- Controls -->
         <div class="flex flex-col items-center gap-4 md:gap-6 w-full px-2">
-            <!-- Main ROLL button with increased tap area -->
+            <!-- Main ROLL button - обычная на мобильных -->
             <button id="roll-btn" class="group relative w-full max-w-md h-20 md:h-20 btn-neon text-2xl md:text-3xl font-black tracking-widest uppercase rounded-lg hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden tap-highlight touch-fix"
                     style="min-height: 80px; padding: 20px;">
                 <span class="relative z-10 flex items-center justify-center gap-3">
@@ -1041,16 +1042,17 @@
                 <div class="shine-overlay"></div>
             </button>
 
-            <!-- Control buttons - stacked vertically on mobile -->
-            <div class="flex flex-col md:flex-row gap-4 w-full max-w-md mobile-stack">
-                <button id="auto-roll-btn" class="w-full md:w-auto px-6 py-3 md:px-8 md:py-3 btn-neon-red rounded-lg text-lg font-bold hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 mobile-large-tap">
+            <!-- Ряд кнопок AUTO и КОЛЛЕКЦИЯ - на мобильных в ряд под кнопкой ROLL -->
+            <div class="mobile-button-row hidden md:flex md:flex-row gap-4 w-full max-w-md">
+                <button id="auto-roll-btn" class="w-full md:w-auto px-6 py-3 md:px-8 md:py-3 btn-neon-red rounded-lg text-lg font-bold hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3">
                     <i class="fas fa-bolt"></i> 
                     <span>AUTO: <span id="auto-status" class="text-red-400">OFF</span></span>
                 </button>
-                <button onclick="toggleInventory()" class="w-full md:w-auto px-6 py-3 md:px-8 md:py-3 btn-neon rounded-lg text-lg font-bold hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 mobile-large-tap">
+                <button onclick="toggleInventory()" class="w-full md:w-auto px-6 py-3 md:px-8 md:py-3 btn-neon rounded-lg text-lg font-bold hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3">
                     <i class="fas fa-box-open"></i> КОЛЛЕКЦИЯ
                 </button>
-                <button onclick="toggleShop()" class="w-full md:w-auto px-6 py-3 md:px-8 md:py-3 btn-neon-green rounded-lg text-lg font-bold hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 mobile-large-tap">
+                <!-- Кнопка магазина скрыта на мобильных -->
+                <button onclick="toggleShop()" class="w-full md:w-auto px-6 py-3 md:px-8 md:py-3 btn-neon-green rounded-lg text-lg font-bold hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 hidden md:flex">
                     <i class="fas fa-store"></i> МАГАЗИН
                 </button>
             </div>
@@ -1134,20 +1136,7 @@
                     <i class="fas fa-check"></i> Активировать
                 </button>
                 
-                <!-- ИЗМЕНЕНО: Убрана подсказка с промокодами -->
-                <!-- 
-                <div class="mt-4 p-3 bg-gradient-to-r from-green-900/30 to-blue-900/30 rounded-lg">
-                    <div class="flex items-start gap-2">
-                        <i class="fas fa-lightbulb text-yellow-300 mt-1"></i>
-                        <p class="text-xs text-gray-300">
-                            Активные промокоды:<br>
-                            <span class="text-green-300">"RELEASE"</span> и <span class="text-green-300">"1.0.4"</span> - по 1000 монет
-                        </p>
-                    </div>
-                </div>
-                -->
-                
-                <!-- ИЗМЕНЕНО: Добавлена ссылка на Telegram-канал -->
+                <!-- Ссылка на Telegram-канал -->
                 <div class="mt-4 p-3 bg-gradient-to-r from-purple-900/30 to-cyan-900/30 rounded-lg">
                     <div class="flex items-center justify-center gap-2">
                         <i class="fab fa-telegram text-blue-400 text-lg"></i>
@@ -1370,6 +1359,7 @@
         const cutsceneText = document.getElementById('cutscene-text');
         const cutsceneSub = document.getElementById('cutscene-sub');
         const cutsceneFlash = document.getElementById('cutscene-flash');
+        const mobileShopIcon = document.getElementById('mobile-shop-icon');
 
         let isRolling = false;
         let autoInterval = null;
@@ -1396,6 +1386,16 @@
             if (isMobile) {
                 // Add mobile-specific classes
                 document.body.classList.add('mobile-optimized');
+                
+                // Показать мобильную иконку магазина
+                mobileShopIcon.style.display = 'flex';
+                
+                // Показать ряд кнопок для мобильных
+                const mobileButtonRow = document.querySelector('.mobile-button-row');
+                if (mobileButtonRow) {
+                    mobileButtonRow.classList.remove('hidden');
+                    mobileButtonRow.classList.add('flex');
+                }
                 
                 // Fix button positioning
                 setTimeout(() => {
@@ -1494,8 +1494,11 @@
             if (code === 'RELEASE') {
                 reward = 1000;
                 valid = true;
-            } else if (code === '1.0.0') { // ИЗМЕНЕНО: Промокод изменен на "1.0.0"
+            } else if (code === '1.0.0') {
                 reward = 1000;
+                valid = true;
+            } else if (code === 'MOBILEBUG') { // ИЗМЕНЕНО: Добавлен новый промокод
+                reward = 2000;
                 valid = true;
             }
             
