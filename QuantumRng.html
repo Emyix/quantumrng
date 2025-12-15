@@ -15,6 +15,7 @@
             --neon-pink: #ff00ff;
             --neon-blue: #00f7ff;
             --neon-green: #00ff9d;
+            --neon-orange: #ff9900;
         }
 
         body {
@@ -92,6 +93,22 @@
                 border: 2px solid #00ff00 !important;
             }
             
+            .mobile-index-icon {
+                position: absolute !important;
+                top: 120px !important;
+                left: 20px !important;
+                width: 40px !important;
+                height: 40px !important;
+                border-radius: 50% !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                font-size: 18px !important;
+                z-index: 30 !important;
+                background: rgba(255, 153, 0, 0.2) !important;
+                border: 2px solid #ff9900 !important;
+            }
+            
             .text-xs.text-cyan-400\/70 {
                 font-size: 10px !important;
                 max-width: 95% !important;
@@ -121,7 +138,8 @@
             }
             
             #inventory-drawer h2,
-            #shop-drawer h2 {
+            #shop-drawer h2,
+            #index-drawer h2 {
                 font-size: 18px !important;
             }
         }
@@ -140,6 +158,13 @@
             .mobile-shop-icon {
                 top: 110px !important;
                 right: 15px !important;
+                width: 36px !important;
+                height: 36px !important;
+            }
+            
+            .mobile-index-icon {
+                top: 110px !important;
+                left: 15px !important;
                 width: 36px !important;
                 height: 36px !important;
             }
@@ -535,14 +560,39 @@
             box-shadow: 0 0 20px #00ff00;
             animation: potion-pulse 2s infinite;
         }
+
+        /* Shield Timer */
+        #shield-timer {
+            position: fixed;
+            bottom: 20px;
+            right: 140px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #0088ff;
+            border-radius: 10px;
+            padding: 10px 15px;
+            z-index: 100;
+            display: none;
+            box-shadow: 0 0 20px #0088ff;
+            animation: shield-pulse 2s infinite;
+        }
         
         @keyframes potion-pulse {
             0%, 100% { box-shadow: 0 0 20px #00ff00; }
             50% { box-shadow: 0 0 40px #00ff00, 0 0 60px #00ff00; }
         }
+
+        @keyframes shield-pulse {
+            0%, 100% { box-shadow: 0 0 20px #0088ff; }
+            50% { box-shadow: 0 0 40px #0088ff, 0 0 60px #0088ff; }
+        }
         
         .potion-active {
             color: #00ff00;
+            font-weight: bold;
+        }
+
+        .shield-active {
+            color: #0088ff;
             font-weight: bold;
         }
         
@@ -874,6 +924,18 @@
             box-shadow: 0 0 30px #00ff00, 0 0 40px #00ff00, inset 0 0 20px rgba(0, 255, 0, 0.2);
         }
 
+        .btn-neon-orange {
+            border-color: #ff9900;
+            color: #ff9900;
+            text-shadow: 0 0 10px #ff9900;
+            box-shadow: 0 0 20px #ff9900, inset 0 0 20px rgba(255, 153, 0, 0.1);
+        }
+        
+        .btn-neon-orange:hover {
+            background: rgba(255, 153, 0, 0.1);
+            box-shadow: 0 0 30px #ff9900, 0 0 40px #ff9900, inset 0 0 20px rgba(255, 153, 0, 0.2);
+        }
+
         /* Shine Effect */
         @keyframes shine {
             to { transform: translateX(100%); }
@@ -945,6 +1007,15 @@
         </div>
     </div>
 
+    <!-- Shield Timer -->
+    <div id="shield-timer">
+        <div class="flex items-center gap-2">
+            <i class="fas fa-shield-alt shield-active"></i>
+            <span>Щит: </span>
+            <span id="shield-time" class="shield-active">60с</span>
+        </div>
+    </div>
+
     <!-- Luck Multiplier Display -->
     <div id="luck-multiplier" class="luck-multiplier" style="display: none;">
         Удача: <span id="multiplier-value">x1.0</span>
@@ -963,7 +1034,7 @@
             <h1 class="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 tracking-wider">
                 <i class="fas fa-atom mr-2"></i>QUANTUM RNG
             </h1>
-            <span class="text-xs text-cyan-400/70 tracking-widest">v1.0.5</span>
+            <span class="text-xs text-cyan-400/70 tracking-widest">v1.1.0</span>
         </div>
         <div class="flex gap-4 md:gap-6 text-sm md:text-base mobile-center">
             <div class="text-right mobile-small-text">
@@ -986,6 +1057,11 @@
     <!-- Маленькая иконка магазина для мобильных устройств -->
     <button id="mobile-shop-icon" class="mobile-shop-icon md:hidden" onclick="toggleShop()">
         <i class="fas fa-store text-green-300"></i>
+    </button>
+
+    <!-- Маленькая иконка индекса для мобильных устройств -->
+    <button id="mobile-index-icon" class="mobile-index-icon md:hidden" onclick="toggleIndex()">
+        <i class="fas fa-book text-orange-300"></i>
     </button>
 
     <!-- Main Game Area -->
@@ -1027,7 +1103,7 @@
                 <div class="shine-overlay"></div>
             </button>
 
-            <!-- Ряд кнопок AUTO и КОЛЛЕКЦИЯ -->
+            <!-- Ряд кнопок AUTO, КОЛЛЕКЦИЯ, ИНДЕКС и МАГАЗИН -->
             <div class="mobile-button-row hidden md:flex md:flex-row gap-4 w-full max-w-md">
                 <button id="auto-roll-btn" class="w-full md:w-auto px-6 py-3 md:px-8 md:py-3 btn-neon-red rounded-lg text-lg font-bold hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3">
                     <i class="fas fa-bolt"></i> 
@@ -1035,6 +1111,9 @@
                 </button>
                 <button onclick="toggleInventory()" class="w-full md:w-auto px-6 py-3 md:px-8 md:py-3 btn-neon rounded-lg text-lg font-bold hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3">
                     <i class="fas fa-box-open"></i> КОЛЛЕКЦИЯ
+                </button>
+                <button onclick="toggleIndex()" class="w-full md:w-auto px-6 py-3 md:px-8 md:py-3 btn-neon-orange rounded-lg text-lg font-bold hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 hidden md:flex">
+                    <i class="fas fa-book"></i> ИНДЕКС
                 </button>
                 <button onclick="toggleShop()" class="w-full md:w-auto px-6 py-3 md:px-8 md:py-3 btn-neon-green rounded-lg text-lg font-bold hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 hidden md:flex">
                     <i class="fas fa-store"></i> МАГАЗИН
@@ -1072,6 +1151,26 @@
         </div>
     </div>
 
+    <!-- Index Drawer -->
+    <div id="index-drawer" class="fixed bottom-0 left-0 w-full h-[75vh] md:h-[70vh] bg-gradient-to-t from-black/95 to-orange-900/30 border-t border-orange-500/30 backdrop-blur-lg transform translate-y-full transition-transform duration-500 z-40 shadow-2xl flex flex-col">
+        <div class="p-4 md:p-6 border-b border-orange-500/30 flex justify-between items-center bg-black/50">
+            <h2 class="text-xl md:text-2xl font-black text-orange-300">
+                <i class="fas fa-book mr-2 md:mr-3 text-orange-400"></i>ИНДЕКС АУР
+            </h2>
+            <div class="flex items-center gap-3 md:gap-4">
+                <div class="text-md md:text-lg font-bold coin-display">
+                    <i class="fas fa-coins mr-1 md:mr-2"></i><span id="index-coins">0</span>
+                </div>
+                <button onclick="toggleIndex()" class="text-xl md:text-2xl text-orange-300 hover:text-white transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div id="index-grid" class="p-4 md:p-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 overflow-y-auto flex-1">
+            <!-- Index Items go here -->
+        </div>
+    </div>
+
     <!-- Shop Drawer -->
     <div id="shop-drawer" class="fixed bottom-0 left-0 w-full h-[75vh] md:h-[70vh] bg-gradient-to-t from-black/95 to-green-900/30 border-t border-green-500/30 backdrop-blur-lg transform translate-y-full transition-transform duration-500 z-40 shadow-2xl flex flex-col">
         <div class="p-4 md:p-6 border-b border-green-500/30 flex justify-between items-center bg-black/50">
@@ -1102,6 +1201,25 @@
                         <i class="fas fa-clock mr-1"></i>60 секунд
                     </div>
                     <button id="buy-potion-btn" onclick="buyLuckPotion()" class="px-3 py-2 md:px-4 md:py-2 bg-gradient-to-r from-green-700 to-green-900 hover:from-green-600 hover:to-green-800 rounded-lg font-bold transition-all text-sm md:text-base">
+                        Купить
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Shield -->
+            <div class="shop-item">
+                <div class="flex items-center justify-between mb-3 md:mb-4">
+                    <h3 class="text-lg md:text-xl font-bold text-blue-400">Щит</h3>
+                    <span class="text-md md:text-lg font-bold coin-display">15000 <i class="fas fa-coins ml-1"></i></span>
+                </div>
+                <p class="text-gray-300 mb-3 md:mb-4 text-xs md:text-sm">
+                    Защищает от Common, Uncommon и Rare аур на 1 минуту. При активации эти ауры не будут выпадать.
+                </p>
+                <div class="flex items-center justify-between">
+                    <div class="text-xs text-gray-400">
+                        <i class="fas fa-clock mr-1"></i>60 секунд
+                    </div>
+                    <button id="buy-shield-btn" onclick="buyShield()" class="px-3 py-2 md:px-4 md:py-2 bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-600 hover:to-blue-800 rounded-lg font-bold transition-all text-sm md:text-base">
                         Купить
                     </button>
                 </div>
@@ -1314,8 +1432,13 @@
             luckPotionActive: false,
             luckPotionTimeLeft: 0,
             luckPotionTimer: null,
+            shieldActive: false,
+            shieldTimeLeft: 0,
+            shieldTimer: null,
             cutsceneActive: false,
-            usedPromoCodes: []
+            usedPromoCodes: [],
+            index: {},
+            autoSell: []
         };
 
         // --- DOM Elements ---
@@ -1332,8 +1455,11 @@
         const coinsDisplay = document.getElementById('coins-display');
         const shopCoinsDisplay = document.getElementById('shop-coins');
         const inventoryGrid = document.getElementById('inventory-grid');
+        const indexGrid = document.getElementById('index-grid');
         const potionTimer = document.getElementById('potion-timer');
         const potionTimeDisplay = document.getElementById('potion-time');
+        const shieldTimer = document.getElementById('shield-timer');
+        const shieldTimeDisplay = document.getElementById('shield-time');
         const luckMultiplierDisplay = document.getElementById('luck-multiplier');
         const multiplierValueDisplay = document.getElementById('multiplier-value');
         const promoInput = document.getElementById('promo-input');
@@ -1343,6 +1469,7 @@
         const cutsceneSub = document.getElementById('cutscene-sub');
         const cutsceneFlash = document.getElementById('cutscene-flash');
         const mobileShopIcon = document.getElementById('mobile-shop-icon');
+        const mobileIndexIcon = document.getElementById('mobile-index-icon');
 
         let isRolling = false;
         let autoInterval = null;
@@ -1363,12 +1490,14 @@
             loadData();
             updateStatsUI();
             renderInventory();
+            renderIndex();
             updateLuckMultiplierDisplay();
             
             // Mobile optimizations
             if (isMobile) {
                 document.body.classList.add('mobile-optimized');
                 mobileShopIcon.style.display = 'flex';
+                mobileIndexIcon.style.display = 'flex';
                 
                 const mobileButtonRow = document.querySelector('.mobile-button-row');
                 if (mobileButtonRow) {
@@ -1392,12 +1521,27 @@
             
             autoBtn.addEventListener('click', toggleAutoRoll);
             
-            // Start potion timer if active
+            // Start timers if active
             if (state.luckPotionActive) {
                 startPotionTimer();
             }
             
+            if (state.shieldActive) {
+                startShieldTimer();
+            }
+            
             updateUsedPromosCount();
+            
+            // Initialize index if empty
+            if (Object.keys(state.index).length === 0) {
+                AURAS.forEach(aura => {
+                    state.index[aura.id] = {
+                        obtained: false,
+                        rewardClaimed: false
+                    };
+                });
+                saveData();
+            }
             
             // Add CSS for spin animation
             const style = document.createElement('style');
@@ -1523,9 +1667,186 @@
             }
         }
 
+        // --- Shield System ---
+        function buyShield() {
+            if (state.coins >= 15000) {
+                state.coins -= 15000;
+                state.shieldActive = true;
+                state.shieldTimeLeft = 60;
+                startShieldTimer();
+                showNotification('Щит активирован! Защита от Common, Uncommon, Rare на 1 минуту.', 'blue');
+                
+                saveData();
+                updateStatsUI();
+            } else {
+                showNotification('Недостаточно монет для покупки щита!', 'red');
+            }
+        }
+        
+        function startShieldTimer() {
+            if (state.shieldTimer) {
+                clearInterval(state.shieldTimer);
+            }
+            
+            shieldTimer.style.display = 'block';
+            
+            state.shieldTimer = setInterval(() => {
+                if (!state.cutsceneActive) {
+                    state.shieldTimeLeft--;
+                    shieldTimeDisplay.textContent = `${state.shieldTimeLeft}с`;
+                    
+                    if (state.shieldTimeLeft <= 0) {
+                        clearInterval(state.shieldTimer);
+                        state.shieldActive = false;
+                        shieldTimer.style.display = 'none';
+                        
+                        showNotification('Действие щита закончилось.', 'yellow');
+                        
+                        saveData();
+                    }
+                }
+            }, 1000);
+        }
+
+        // --- Index System ---
+        function renderIndex() {
+            indexGrid.innerHTML = '';
+            
+            AURAS.forEach((aura, index) => {
+                const indexData = state.index[aura.id] || { obtained: false, rewardClaimed: false };
+                const card = document.createElement('div');
+                card.className = `collection-card ${aura.id} p-3 md:p-4 rounded-xl flex flex-col items-center relative group transition-all duration-300 hover:scale-105`;
+                card.style.setProperty('--index', index);
+                
+                let statusText = '';
+                let button = '';
+                
+                if (indexData.obtained) {
+                    if (indexData.rewardClaimed) {
+                        statusText = '<span class="text-green-400 text-xs md:text-sm">Награда получена</span>';
+                    } else {
+                        statusText = '<span class="text-yellow-400 text-xs md:text-sm">Награда доступна</span>';
+                        button = `<button onclick="claimAuraReward('${aura.id}')" class="mt-2 text-xs bg-gradient-to-r from-yellow-700 to-yellow-900 hover:from-yellow-600 hover:to-yellow-800 px-2 py-1 md:px-3 md:py-2 rounded-lg text-white w-full transition-all">
+                            Забрать 200 монет
+                        </button>`;
+                    }
+                } else {
+                    statusText = '<span class="text-gray-500 text-xs md:text-sm">Не получено</span>';
+                }
+                
+                card.innerHTML = `
+                    <div class="h-12 w-12 md:h-16 md:w-16 rounded-full mb-2 md:mb-3 flex items-center justify-center bg-gradient-to-br from-black/50 to-gray-900/50 shadow-2xl">
+                        <i class="fas fa-star ${aura.color} text-lg md:text-2xl"></i>
+                    </div>
+                    <div class="mb-1 md:mb-2">
+                        <span class="rarity-badge ${aura.rarityClass} text-xs md:text-sm">${aura.name}</span>
+                    </div>
+                    <div class="text-[10px] md:text-[10px] text-gray-400 mb-2 md:mb-3 text-center">1 in ${aura.chance.toLocaleString()}</div>
+                    <div class="text-[10px] md:text-xs text-gray-300 text-center mb-2 h-10 overflow-hidden">${aura.desc}</div>
+                    ${statusText}
+                    ${button}
+                `;
+                indexGrid.appendChild(card);
+            });
+            
+            // Check if all auras obtained
+            const allObtained = AURAS.every(aura => state.index[aura.id]?.obtained);
+            const allRewardsClaimed = AURAS.every(aura => !state.index[aura.id]?.obtained || state.index[aura.id]?.rewardClaimed);
+            const allIndexRewardClaimed = state.index.allIndexRewardClaimed || false;
+            
+            if (allObtained && !allIndexRewardClaimed) {
+                const progressCard = document.createElement('div');
+                progressCard.className = 'col-span-full p-4 md:p-6 text-center';
+                progressCard.innerHTML = `
+                    <div class="mb-4">
+                        <h3 class="text-lg md:text-xl font-bold text-green-400 mb-2">Вся коллекция собрана!</h3>
+                        <p class="text-gray-300 text-sm md:text-base">Вы получили все ${AURAS.length} аур!</p>
+                    </div>
+                    <button onclick="claimAllIndexReward()" class="px-4 py-3 bg-gradient-to-r from-green-700 to-green-900 hover:from-green-600 hover:to-green-800 rounded-lg font-bold text-lg transition-all">
+                        Забрать награду 20000 монет!
+                    </button>
+                `;
+                indexGrid.appendChild(progressCard);
+            } else if (allIndexRewardClaimed) {
+                const progressCard = document.createElement('div');
+                progressCard.className = 'col-span-full p-4 md:p-6 text-center';
+                progressCard.innerHTML = `
+                    <div class="mb-4">
+                        <h3 class="text-lg md:text-xl font-bold text-green-400 mb-2">Коллекция завершена!</h3>
+                        <p class="text-gray-300 text-sm md:text-base">Вы получили все награды за коллекцию!</p>
+                    </div>
+                `;
+                indexGrid.appendChild(progressCard);
+            } else {
+                const obtainedCount = AURAS.filter(aura => state.index[aura.id]?.obtained).length;
+                const progressCard = document.createElement('div');
+                progressCard.className = 'col-span-full p-4 text-center';
+                progressCard.innerHTML = `
+                    <div class="mb-2">
+                        <h3 class="text-md md:text-lg font-bold text-cyan-400">Прогресс: ${obtainedCount}/${AURAS.length}</h3>
+                        <p class="text-gray-300 text-xs md:text-sm">Соберите все ауры для получения награды!</p>
+                    </div>
+                `;
+                indexGrid.appendChild(progressCard);
+            }
+            
+            // Update coins display in index
+            document.getElementById('index-coins').textContent = state.coins.toLocaleString();
+        }
+        
+        function claimAuraReward(auraId) {
+            const indexData = state.index[auraId];
+            if (indexData && indexData.obtained && !indexData.rewardClaimed) {
+                indexData.rewardClaimed = true;
+                state.coins += 200;
+                showNotification(`Награда за первую ауру ${auraId} получена! +200 монет`, 'green');
+                saveData();
+                updateStatsUI();
+                renderIndex();
+            }
+        }
+        
+        function claimAllIndexReward() {
+            const allObtained = AURAS.every(aura => state.index[aura.id]?.obtained);
+            if (allObtained && !state.index.allIndexRewardClaimed) {
+                state.index.allIndexRewardClaimed = true;
+                state.coins += 20000;
+                showNotification('Награда за полную коллекцию получена! +20000 монет', 'green');
+                saveData();
+                updateStatsUI();
+                renderIndex();
+            }
+        }
+
+        // --- Auto Sell System ---
+        function toggleAutoSell(auraId) {
+            const index = state.autoSell.indexOf(auraId);
+            const aura = AURAS.find(a => a.id === auraId);
+            
+            if (index === -1) {
+                state.autoSell.push(auraId);
+                showNotification(`${aura.name} добавлена в автопродажу`, 'yellow');
+            } else {
+                state.autoSell.splice(index, 1);
+                showNotification(`${aura.name} убрана из автопродажи`, 'yellow');
+            }
+            
+            saveData();
+            renderInventory();
+        }
+
         // --- FIXED RNG Logic ---
         function getRandomAura() {
-            const sortedAuras = [...AURAS].sort((a, b) => b.chance - a.chance);
+            let filteredAuras = AURAS;
+            
+            // Apply shield filter
+            if (state.shieldActive) {
+                filteredAuras = filteredAuras.filter(aura => 
+                    aura.id !== 'common' && aura.id !== 'uncommon' && aura.id !== 'rare'
+                );
+            }
+            
+            const sortedAuras = [...filteredAuras].sort((a, b) => b.chance - a.chance);
             const luckMultiplier = getLuckMultiplier();
             
             let totalWeight = 0;
@@ -1550,7 +1871,7 @@
                 }
             }
             
-            return AURAS[0];
+            return filteredAuras[0];
         }
 
         async function performRoll(skipCutscene = false) {
@@ -1591,14 +1912,27 @@
                 state.cutsceneActive = false;
             }
 
-            // Update State - ИСПРАВЛЕНИЕ БАГА
+            // Update State
             state.totalRolls++;
             
-            // Гарантированное добавление ауры в инвентарь
-            if (!state.inventory[result.id]) {
-                state.inventory[result.id] = 0;
+            // Check if first time obtained
+            if (!state.index[result.id].obtained) {
+                state.index[result.id].obtained = true;
+                state.coins += 200;
+                showNotification(`Первое получение ауры ${result.name}! +200 монет`, 'green');
             }
-            state.inventory[result.id]++;
+            
+            // Check auto sell
+            if (state.autoSell.includes(result.id) && result.price > 0) {
+                state.coins += result.price;
+                showNotification(`Аура ${result.name} автоматически продана за ${result.price} монет`, 'yellow');
+            } else {
+                // Add to inventory
+                if (!state.inventory[result.id]) {
+                    state.inventory[result.id] = 0;
+                }
+                state.inventory[result.id]++;
+            }
             
             if (!state.bestAura || result.chance > state.bestAura.chance) {
                 state.bestAura = result;
@@ -1613,6 +1947,7 @@
             updateStatsUI();
             displayResult(result);
             renderInventory();
+            renderIndex();
 
             isRolling = false;
             rollBtn.disabled = false;
@@ -1808,7 +2143,9 @@
         function toggleInventory() {
             const drawer = document.getElementById('inventory-drawer');
             const shop = document.getElementById('shop-drawer');
+            const indexDrawer = document.getElementById('index-drawer');
             shop.classList.add('translate-y-full');
+            indexDrawer.classList.add('translate-y-full');
             
             if (drawer.classList.contains('translate-y-full')) {
                 drawer.classList.remove('translate-y-full');
@@ -1818,10 +2155,27 @@
             }
         }
         
+        function toggleIndex() {
+            const drawer = document.getElementById('index-drawer');
+            const inventory = document.getElementById('inventory-drawer');
+            const shop = document.getElementById('shop-drawer');
+            inventory.classList.add('translate-y-full');
+            shop.classList.add('translate-y-full');
+            
+            if (drawer.classList.contains('translate-y-full')) {
+                drawer.classList.remove('translate-y-full');
+                renderIndex();
+            } else {
+                drawer.classList.add('translate-y-full');
+            }
+        }
+        
         function toggleShop() {
             const drawer = document.getElementById('shop-drawer');
             const inventory = document.getElementById('inventory-drawer');
+            const indexDrawer = document.getElementById('index-drawer');
             inventory.classList.add('translate-y-full');
+            indexDrawer.classList.add('translate-y-full');
             
             if (drawer.classList.contains('translate-y-full')) {
                 drawer.classList.remove('translate-y-full');
@@ -1861,9 +2215,13 @@
                 
                 let buttons = '';
                 if (aura.price > 0) {
+                    const isAutoSell = state.autoSell.includes(aura.id);
                     buttons += `
                         <button onclick="sellAura('${aura.id}')" class="mt-2 text-xs bg-gradient-to-r from-yellow-700 to-yellow-900 hover:from-yellow-600 hover:to-yellow-800 px-2 py-1 md:px-3 md:py-2 rounded-lg text-white w-full transition-all mobile-equip-btn">
                             Продать (${aura.price})
+                        </button>
+                        <button onclick="toggleAutoSell('${aura.id}')" class="mt-2 text-xs bg-gradient-to-r ${isAutoSell ? 'from-red-700 to-red-900' : 'from-blue-700 to-blue-900'} hover:from-${isAutoSell ? 'red-600' : 'blue-600'} hover:to-${isAutoSell ? 'red-800' : 'blue-800'} px-2 py-1 md:px-3 md:py-2 rounded-lg text-white w-full transition-all mobile-equip-btn">
+                            ${isAutoSell ? 'Выкл. автопродажу' : 'Вкл. автопродажу'}
                         </button>
                     `;
                 } else if (aura.id === 'common') {
@@ -2056,7 +2414,7 @@
         // --- Notification System ---
         function showNotification(message, color = 'cyan') {
             const notification = document.createElement('div');
-            const colorClass = color === 'green' ? 'green' : color === 'red' ? 'red' : color === 'yellow' ? 'yellow' : 'cyan';
+            const colorClass = color === 'green' ? 'green' : color === 'red' ? 'red' : color === 'yellow' ? 'yellow' : color === 'blue' ? 'blue' : 'cyan';
             
             notification.className = `fixed top-4 left-1/2 transform -translate-x-1/2 bg-black/80 border border-${colorClass}-500 text-${colorClass}-300 px-4 md:px-6 py-2 md:py-3 rounded-lg z-50 shadow-lg transition-all duration-300 max-w-[90vw]`;
             notification.innerHTML = `
@@ -2085,7 +2443,11 @@
                 equippedAura: state.equippedAura,
                 luckPotionActive: state.luckPotionActive,
                 luckPotionTimeLeft: state.luckPotionTimeLeft,
-                usedPromoCodes: state.usedPromoCodes
+                shieldActive: state.shieldActive,
+                shieldTimeLeft: state.shieldTimeLeft,
+                usedPromoCodes: state.usedPromoCodes,
+                index: state.index,
+                autoSell: state.autoSell
             };
             localStorage.setItem('quantumRngSave', JSON.stringify(dataToSave));
         }
@@ -2101,14 +2463,36 @@
                     state.equippedAura = parsed.equippedAura || null;
                     state.luckPotionActive = parsed.luckPotionActive || false;
                     state.luckPotionTimeLeft = parsed.luckPotionTimeLeft || 0;
+                    state.shieldActive = parsed.shieldActive || false;
+                    state.shieldTimeLeft = parsed.shieldTimeLeft || 0;
                     state.usedPromoCodes = parsed.usedPromoCodes || [];
+                    state.index = parsed.index || {};
+                    state.autoSell = parsed.autoSell || [];
                     
                     if (parsed.best) {
                         state.bestAura = AURAS.find(a => a.id === parsed.best);
                     }
+                    
+                    // Initialize index for new auras
+                    AURAS.forEach(aura => {
+                        if (!state.index[aura.id]) {
+                            state.index[aura.id] = {
+                                obtained: false,
+                                rewardClaimed: false
+                            };
+                        }
+                    });
                 } catch (e) {
                     console.error("Ошибка загрузки сохранения");
                 }
+            } else {
+                // Initialize index for first time
+                AURAS.forEach(aura => {
+                    state.index[aura.id] = {
+                        obtained: false,
+                        rewardClaimed: false
+                    };
+                });
             }
         }
 
